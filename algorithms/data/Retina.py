@@ -31,7 +31,7 @@ import statistics
 
 class RetinaModel:
     def __init__(self, icp, fn, ret_fn):
-        self.init_cond = icp
+        self.init_cond_path = icp
         self.filename = fn
         self.return_file = ret_fn
 
