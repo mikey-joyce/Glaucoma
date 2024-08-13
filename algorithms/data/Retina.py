@@ -490,10 +490,10 @@ class RetinaModel:
             f_R5.append(temp_res[7])
 
         res = pd.DataFrame({
-            'P1mean': f_P1mean, 
-            'P2mean': f_P2mean, 
-            'P4mean': f_P4mean, 
-            'P5mean': f_P5mean, 
+            'P1': f_P1mean, 
+            'P2': f_P2mean, 
+            'P4': f_P4mean, 
+            'P5': f_P5mean, 
             'Qmean': f_Qmean, 
             'R1': f_R1, 
             'R4': f_R4, 
