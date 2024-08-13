@@ -476,14 +476,29 @@ class RetinaModel:
         # res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
 
         # above comments replaced with this snippet
-        cols = ['P1mean', 'P2mean', 'P4mean', 'P5mean', 'Qmean', 'R1', 'R4', 'R5']
-        res = pd.DataFrame(columns=cols)
+        f_P1mean, f_P2mean, f_P4mean, f_P5mean, f_Qmean, f_R1, f_R4, f_R5 = [], [], [], [], [], [], [], []
         for _, row in data.iterrows():
             temp_res = self.Shimpatica_Func(row)
-            index = len(res)
-            res.loc[index] = temp_res
+            
+            f_P1mean.append(temp_res[0])
+            f_P2mean.append(temp_res[1])
+            f_P4mean.append(temp_res[2])
+            f_P5mean.append(temp_res[3])
+            f_Qmean.append(temp_res[4])
+            f_R1.append(temp_res[5])
+            f_R4.append(temp_res[6])
+            f_R5.append(temp_res[7])
 
-        res.columns = ['P1', 'P2', 'P4', 'P5', 'Qmean', 'R1', 'R4', 'R5']
+        res = pd.DataFrame({
+            'P1mean': f_P1mean, 
+            'P2mean': f_P2mean, 
+            'P4mean': f_P4mean, 
+            'P5mean': f_P5mean, 
+            'Qmean': f_Qmean, 
+            'R1': f_R1, 
+            'R4': f_R4, 
+            'R5': f_R5
+        })
 
         db_enhanced = pd.concat([data, res], axis=1)
 
