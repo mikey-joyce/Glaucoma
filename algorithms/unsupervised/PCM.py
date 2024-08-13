@@ -1,5 +1,5 @@
 import numpy as np
-from FCM import FCM
+from .FCM import FCM
 
 
 # A possibilistic approach to clustering; possibilistic c-means (PCM)

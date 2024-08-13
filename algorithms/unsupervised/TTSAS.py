@@ -1,7 +1,7 @@
 import numpy as np
 import math
 from statistics import mode
-from Unsupervised.BSAS import BSAS
+from .BSAS import BSAS
 
 class TTSAS(BSAS):
     def __init__(self):
