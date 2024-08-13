@@ -283,6 +283,9 @@ class RetinaModel:
         dataIOP = pd.read_csv(file_incond)
 
         FilterIOP = dataIOP[dataIOP['IOP'] == np.rint(IOP)]
+
+        print(FilterIOP['P1'])
+
         P1 = float(FilterIOP['P1'])
         P2 = float(FilterIOP['P2'])
         P4 = float(FilterIOP['P4'])
