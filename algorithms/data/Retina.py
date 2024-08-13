@@ -347,7 +347,7 @@ class RetinaModel:
         return Pin, F, Q, R
 
     def Shimpatica_Func(self, row):
-        P0 = self.sel_InCond(row['IOP'])
+        P0 = self.sel_InCond(row['IOP'].astype(int))
         Pinput = [row['SBP'],
                   row['DBP'],
                   row['IOP'],
