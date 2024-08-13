@@ -281,8 +281,10 @@ class RetinaModel:
         #current_path = Path.cwd()
         file_incond = self.init_cond_path
         dataIOP = pd.read_csv(file_incond)
-        dataIOP = dataIOP.astype(float)
+        # dataIOP = dataIOP.astype(float)
 
+        print(dataIOP)
+        
         FilterIOP = dataIOP[dataIOP['IOP'] == np.rint(IOP)]
 
         print(FilterIOP)
