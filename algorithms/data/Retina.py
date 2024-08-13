@@ -281,18 +281,8 @@ class RetinaModel:
         #current_path = Path.cwd()
         file_incond = self.init_cond_path
         dataIOP = pd.read_csv(file_incond)
-        # dataIOP = dataIOP.astype(float)
-
-        print(dataIOP)
-        print("!!!!")
-        print(dataIOP['IOP'])
-        print("!!!!")
-        print(np.rint(IOP))
-
 
         FilterIOP = dataIOP[dataIOP['IOP'] == np.rint(IOP)]
-
-        print(FilterIOP)
 
         P1 = float(FilterIOP['P1'])
         P2 = float(FilterIOP['P2'])
@@ -355,9 +345,7 @@ class RetinaModel:
         return Pin, F, Q, R
 
     def Shimpatica_Func(self, row):
-        print(row['IOP'])
-        print(type(row['IOP']))
-        P0 = self.sel_InCond(float(row['IOP']))
+        P0 = self.sel_InCond(row['IOP'])
         Pinput = [row['SBP'],
                   row['DBP'],
                   row['IOP'],
