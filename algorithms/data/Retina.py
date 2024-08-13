@@ -284,7 +284,12 @@ class RetinaModel:
         # dataIOP = dataIOP.astype(float)
 
         print(dataIOP)
-        
+        print("!!!!")
+        print(dataIOP['IOP'])
+        print("!!!!")
+        print(np.rint(IOP))
+
+
         FilterIOP = dataIOP[dataIOP['IOP'] == np.rint(IOP)]
 
         print(FilterIOP)
