@@ -31,7 +31,7 @@ import statistics
 
 class RetinaModel:
     def __init__(self, icp, fn, ret_fn):
-        self.init_cond_path = icp
+        self.init_cond = pd.read_csv(icp)
         self.filename = fn
         self.return_file = ret_fn
 
@@ -279,8 +279,7 @@ class RetinaModel:
 
         # Load the file containing the initial condition
         #current_path = Path.cwd()
-        file_incond = self.init_cond_path
-        dataIOP = pd.read_csv(file_incond)
+        dataIOP = self.init_cond
 
         FilterIOP = dataIOP[dataIOP['IOP'] == np.rint(IOP)]
 
