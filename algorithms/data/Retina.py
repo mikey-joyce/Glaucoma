@@ -349,7 +349,7 @@ class RetinaModel:
     def Shimpatica_Func(self, row):
         print(row['IOP'])
         print(type(row['IOP']))
-        P0 = self.sel_InCond(row['IOP'].astype(int))
+        P0 = self.sel_InCond(float(row['IOP']))
         Pinput = [row['SBP'],
                   row['DBP'],
                   row['IOP'],
