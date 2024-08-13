@@ -473,14 +473,15 @@ class RetinaModel:
             print('\n ## It seems good ##\n')
 
         # tqdm.pandas(desc=None)
+        # res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
+
+        # above comments replaced with this snippet
         cols = ['P1mean', 'P2mean', 'P4mean', 'P5mean', 'Qmean', 'R1', 'R4', 'R5']
         res = pd.DataFrame(columns=cols)
-        for i, row in data.iterrows():
+        for _, row in data.iterrows():
             temp_res = self.Shimpatica_Func(row)
             index = len(res)
             res.loc[index] = temp_res
-        #res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
-        print(res)
 
         res.columns = ['P1', 'P2', 'P4', 'P5', 'Qmean', 'R1', 'R4', 'R5']
 
