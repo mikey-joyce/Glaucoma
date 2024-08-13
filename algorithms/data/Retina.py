@@ -469,8 +469,8 @@ class RetinaModel:
 
         # Verifiy that everything has been done correctly
 
-        if len(datamissingRows) + len(data) == orig_len:
-            print('\n ## It seems good ##\n')
+        # if len(datamissingRows) + len(data) == orig_len:
+        #    print('\n ## It seems good ##\n')
 
         # tqdm.pandas(desc=None)
         # res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
