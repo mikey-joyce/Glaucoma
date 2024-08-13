@@ -1,6 +1,6 @@
 import numpy as np
-from FCM import FCM
-from PCM import PCM
+from .FCM import FCM
+from .PCM import PCM
 
 
 class BorderClustering:
