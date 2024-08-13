@@ -472,8 +472,11 @@ class RetinaModel:
         if len(datamissingRows) + len(data) == orig_len:
             print('\n ## It seems good ##\n')
 
-        tqdm.pandas(desc=None)
-        res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
+        # tqdm.pandas(desc=None)
+        for i, row in data.iterrows():
+            res = self.Shimpatica_Func(row)
+        #res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
+        print(res)
 
         res.columns = ['P1', 'P2', 'P4', 'P5', 'Qmean', 'R1', 'R4', 'R5']
 
