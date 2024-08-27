@@ -504,7 +504,7 @@ class RetinaModel:
 
         if type(self.return_file) is str:
             db_enhanced.to_csv(self.return_file, index=False)
-            print('Done!')
+            # print('Done!')
         else:
-            print('Done!')
+            # print('Done!')
             return db_enhanced
