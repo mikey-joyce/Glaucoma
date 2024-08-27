@@ -12,5 +12,5 @@ To get started, clone this project to your local machine:
 2. Run the following command to clone the repository:
 
     ```bash
-    git clone https://github.com/mikey-joyce/nightlife.git
+    git clone https://github.com/mikey-joyce/Glaucoma.git
     ```
