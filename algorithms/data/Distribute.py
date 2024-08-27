@@ -18,7 +18,9 @@ def distribute_process(init_args):
     stdout, stderr = proc.communicate(input=serialized_data)
 
     # Handle output or errors
+    print("Output: ")
     print(stdout.decode())
+    print("Errors: ")
     print(stderr.decode())
 
 
