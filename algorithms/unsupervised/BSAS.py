@@ -1,7 +1,7 @@
-import numpy as np
 import math
 from statistics import mode
 
+import numpy as np
 
 class BSAS:
     def __init__(self):

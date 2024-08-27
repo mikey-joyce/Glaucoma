@@ -1,32 +1,24 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import scipy.stats as stats
-import random
-import warnings
-warnings.filterwarnings('ignore')
-
-import sys
-import numpy
-import numpy as np
+# Standard library imports
 import math
-import scipy
-from scipy.optimize import fsolve
-from scipy.optimize import root
-import pandas as pd
-from scipy.integrate import odeint
-from scipy.integrate import solve_ivp
+import pickle
+import random
+import statistics
+import sys
+import warnings
 from pathlib import Path
 
-# for mac
-# import matplotlib
-# matplotlib.use('PS')
-
-from tqdm import tqdm
+# Third-party imports
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
-import pdb
-import pickle
-import statistics
+import scipy
+import scipy.stats as stats
+from scipy.integrate import odeint, solve_ivp
+from scipy.optimize import fsolve, root
+from tqdm import tqdm
+
+# Configure warnings
+warnings.filterwarnings('ignore')
 
 
 class RetinaModel:

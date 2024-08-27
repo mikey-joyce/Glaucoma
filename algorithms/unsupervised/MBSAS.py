@@ -1,6 +1,8 @@
-import numpy as np
 import math
 from statistics import mode
+
+import numpy as np
+
 from .BSAS import BSAS
 
 class MBSAS(BSAS):
