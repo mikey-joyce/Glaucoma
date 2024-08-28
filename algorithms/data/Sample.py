@@ -40,10 +40,8 @@ class Sample():
         
         self.file_path = file_path
 
-        data = pd.read_csv(self.data_dir + fn)
-
         # start the pipeline
-        self.data, self.data2augment = self.__preprocess(data)
+        self.data, self.data2augment = self.__preprocess(pd.read_csv(self.data_dir + fn))
         self.result = self.__sample()
 
         if self.result is None:

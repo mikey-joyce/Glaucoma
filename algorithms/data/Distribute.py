@@ -1,8 +1,9 @@
 import subprocess
 import pickle
+from concurrent.futures import ThreadPoolExecutor
 
 
-def distribute_process(init_args):
+def distribute_process(init_args, id):
     # Serialize the class initialization arguments
     serialized_data = pickle.dumps({'init_args': init_args})
 
@@ -18,9 +19,9 @@ def distribute_process(init_args):
     stdout, stderr = proc.communicate(input=serialized_data)
 
     # Handle output or errors
-    print("Output: ")
+    print(f"Output from process #{id}: ")
     print(stdout.decode())
-    print("Errors: ")
+    print(f"Errors from process #{id}: ")
     print(stderr.decode())
 
 
@@ -28,12 +29,22 @@ if __name__ == '__main__':
     length = 10
     file_path = '../../data/mssm/distributed_sampling/sample'
 
-    for i in range(20):
-        print("Process #", i)
+    num_cores = 20
 
-        init_dict = {
-            'n_samples': length,
-            'file_path': file_path + str(i) + '.csv'
-        }
+    with ThreadPoolExecutor(max_workers=num_cores) as executor:
+        futures = []
+        for i in range(20):
+            print("Process #", i)
 
-        distribute_process(init_dict)
+            init_dict = {
+                'n_samples': length,
+                'file_path': file_path + str(i) + '.csv'
+            }
+
+            futures.append(executor.submit(distribute_process, init_dict, i))
+        
+        for future in futures:
+            try:
+                future.result()
+            except Exception as e:
+                print(f"Process failed with exception: {e}")
