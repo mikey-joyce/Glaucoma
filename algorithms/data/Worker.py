@@ -11,7 +11,7 @@ def main():
 
     # Instantiate the class and run the method
     instance = Sample(**data['init_args'])
-    instance.run_method()
+    instance.save()
 
 if __name__ == "__main__":
     main()
