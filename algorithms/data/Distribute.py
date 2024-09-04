@@ -9,7 +9,7 @@ def distribute_process(init_args, id):
 
     # Run the worker script in a subprocess
     proc = subprocess.Popen(
-        ['python3', 'worker_script.py'],
+        ['python3', 'Worker.py'],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
@@ -26,14 +26,14 @@ def distribute_process(init_args, id):
 
 
 if __name__ == '__main__':
-    length = 10
+    length = 20
     file_path = '../../data/mssm/distributed_sampling/sample'
 
-    num_cores = 20
+    num_cores = 40
 
     with ThreadPoolExecutor(max_workers=num_cores) as executor:
         futures = []
-        for i in range(20):
+        for i in range(num_cores):
             print("Process #", i)
 
             init_dict = {

@@ -24,7 +24,7 @@ basic_feats = [
 
 class Sample():
     def __init__(self, 
-                 n_samples: int = 10, 
+                 n_samples: int = 20, 
                  feats: list = basic_feats, 
                  d_dir: str = '../../data/mssm/',
                  file_path: str = '../../data/mssm/distributed_sampling/example.csv',
