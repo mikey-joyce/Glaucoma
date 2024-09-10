@@ -27,9 +27,9 @@ def distribute_process(init_args, id):
 
 if __name__ == '__main__':
     length = 20
-    file_path = '../../data/mssm/distributed_sampling/sample'
+    file_path = '../../data/igps/distributed_sampling/sample'
 
-    num_cores = 40
+    num_cores = 3
 
     with ThreadPoolExecutor(max_workers=num_cores) as executor:
         futures = []
