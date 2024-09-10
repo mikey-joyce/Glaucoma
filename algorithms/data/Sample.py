@@ -107,11 +107,11 @@ class Sample():
         train_X = data[self.features]
         train_X = train_X.dropna()
 
-        data = data.drop(index=259)
-        train_X = train_X.drop(index=259) # for some reason this patient seems to be bad
+        # data = data.drop(index=259)
+        # train_X = train_X.drop(index=259) # for some reason this patient seems to be bad
 
-        data = data.drop(index=279)
-        train_X = train_X.drop(index=279)
+        # data = data.drop(index=279)
+        # train_X = train_X.drop(index=279)
 
         return data, train_X
 
