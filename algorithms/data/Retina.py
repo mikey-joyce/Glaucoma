@@ -462,14 +462,14 @@ class RetinaModel:
         # Verifiy that everything has been done correctly
 
         # if len(datamissingRows) + len(data) == orig_len:
-        #    print('\n ## It seems good ##\n')
+        #     print('\n ## It seems good ##\n')
 
         # tqdm.pandas(desc=None)
         # res = data.progress_apply(self.Shimpatica_Func, axis=1, result_type='expand')
 
         # above comments replaced with this snippet
         f_P1mean, f_P2mean, f_P4mean, f_P5mean, f_Qmean, f_R1, f_R4, f_R5 = [], [], [], [], [], [], [], []
-        for _, row in data.iterrows():
+        for _, row in tqdm(data.iterrows(), total=len(data), desc='Processing'):
             temp_res = self.Shimpatica_Func(row)
             
             f_P1mean.append(temp_res[0])

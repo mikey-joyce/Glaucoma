@@ -35,7 +35,6 @@ if __name__ == '__main__':
         'IOP', 'MAP', 'SBP', 'DBP', 'HR', 'Q', 'P1', 'P2', 'P4', 'P5', 'R4', 'R5'
     ]
 
-
     num_cores = 3
 
     with ThreadPoolExecutor(max_workers=num_cores) as executor:
