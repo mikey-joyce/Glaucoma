@@ -459,6 +459,7 @@ class RetinaModel:
                 datamissingRows.append(row.Patient);
                 data.drop(row.Index, inplace=True)
 
+        data = data.reset_index(drop=True)
         # Verifiy that everything has been done correctly
 
         # if len(datamissingRows) + len(data) == orig_len:
