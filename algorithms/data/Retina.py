@@ -469,7 +469,7 @@ class RetinaModel:
 
         # above comments replaced with this snippet
         f_P1mean, f_P2mean, f_P4mean, f_P5mean, f_Qmean, f_R1, f_R4, f_R5 = [], [], [], [], [], [], [], []
-        for _, row in tqdm(data.iterrows(), total=len(data), desc='Processing'):
+        for _, row in data.iterrows():
             temp_res = self.Shimpatica_Func(row)
             
             f_P1mean.append(temp_res[0])
