@@ -97,7 +97,10 @@ class Normalizer:
 
         return self.data
 
-    def denorm(self, centers=None):
+    def denorm(self, centers=None, new_data=None):
+        if new_data is not None:
+            self.data = new_data
+
         if centers is not None:
             self.centers = centers
 

@@ -40,11 +40,11 @@ class GK:
             centers[i, :] = num / den
         return centers
 
-    def update_membership(self):
+    def update_membership(self, data):
         """
         Update the membership matrix.
         """
-        n_samples = self.data.shape[0]
+        n_samples = data.shape[0]
         n_clusters = self.centers.shape[0]
         membership = np.zeros((n_samples, n_clusters))
 
@@ -52,43 +52,43 @@ class GK:
             for j in range(n_clusters):
                 summation = 0
                 for k in range(n_clusters):
-                    num = np.linalg.norm(self.data[i, :] - self.centers[j, :])
-                    den = np.linalg.norm(self.data[i, :] - self.centers[k, :])
+                    num = np.linalg.norm(data[i, :] - self.centers[j, :])
+                    den = np.linalg.norm(data[i, :] - self.centers[k, :])
                     summation += (num / den) ** (2 / (self.m - 1))
                 membership[i, j] = 1 / summation
 
         return membership
 
-    def update_covariance(self):
+    def update_covariance(self, data):
         """
         Compute covariance matrix for each cluster.
         """
         n_clusters = self.centers.shape[0]
-        covariance = [np.zeros((self.data.shape[1], self.data.shape[1])) for _ in range(n_clusters)]
+        covariance = [np.zeros((data.shape[1], data.shape[1])) for _ in range(n_clusters)]
 
         for j in range(n_clusters):
-            num = np.zeros((self.data.shape[1], self.data.shape[1]))
+            num = np.zeros((data.shape[1], data.shape[1]))
             den = np.sum(self.membership[:, j] ** self.m)
 
-            for i in range(self.data.shape[0]):
-                diff = (self.data[i, :] - self.centers[j, :])[np.newaxis]
+            for i in range(data.shape[0]):
+                diff = (data[i, :] - self.centers[j, :])[np.newaxis]
                 num += (self.membership[i, j] ** self.m) * np.dot(diff.T, diff)
 
             covariance[j] = num / den
 
         return covariance
 
-    def get_distance(self):
+    def get_distance(self, data):
         """
         Calculate the adaptive distance.
         """
-        n_samples = self.data.shape[0]
+        n_samples = data.shape[0]
         n_clusters = self.centers.shape[0]
         distances = np.zeros((n_samples, n_clusters))
 
         for i in range(n_samples):
             for j in range(n_clusters):
-                diff = (self.data[i, :] - self.centers[j, :])[np.newaxis]
+                diff = (data[i, :] - self.centers[j, :])[np.newaxis]
                 inv_cov = np.linalg.inv(self.covariance[j])
                 distances[i, j] = np.sqrt(np.dot(np.dot(diff, inv_cov), diff.T))
 
@@ -108,11 +108,10 @@ class GK:
         """
         self.membership = self.membership_init()
 
-        for iteration in range(self.max_epochs):
+        for _ in range(self.max_epochs):
             self.centers = self.update_center()
-            self.covariance = self.update_covariance()
-            self.distances = self.get_distance()
-            self.membership = self.update_membership()
+            self.covariance = self.update_covariance(self.data)
+            self.distances = self.get_distance(self.data)
+            self.membership = self.update_membership(self.data)
 
         return self.centers, self.harden_membership(self.membership)
-
