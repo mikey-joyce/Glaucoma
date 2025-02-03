@@ -11,8 +11,10 @@ class FCM:
         self.membership = None
 
         try:
-            if not centers:
+            if centers is None:
                 self.centers = self.data[np.random.choice(self.data.shape[0], self.num_clusters, replace=False)]
+            else:
+                self.centers = centers
         except:
             self.centers = centers
 
