@@ -1,0 +1,31 @@
+Naïve FCM:
+C0: Healthy 538 (96.8%), Developed Glaucoma 18 (3.2%)
+C1: Healthy 467 (95.5%), Developed Glaucoma 22 (4.5%)
+C2: Healthy 335 (93.3%), Developed Glaucoma 24 (6.7%)
+
+Chi-Square Test: χ² = 5.9667, p = 0.0506
+No significant differences among groups.
+
+
+
+First Ensemble (Elevating the minority class influence through reuse of the minority class):
+C0: Healthy 590 (96.9%), Developed Glaucoma 19 (3.1%)
+C1: Healthy 228 (91.2%), Developed Glaucoma 22 (8.8%)
+C2: Healthy 528 (96.9%), Developed Glaucoma 17 (3.1%)
+
+Chi-Square Test: χ² = 16.7417, p = 0.0002
+Fisher’s Test 0-1: OR = 2.9963, p = 0.0007 → SIGNIFICANT
+Fisher’s Test 0-2: OR = 0.9998, p = 1.0000 → Not Significant
+Fisher’s Test 1-2: OR = 0.3337, p = 0.0011 → SIGNIFICANT
+
+
+
+Second Ensemble (Random subgroup selection):
+C0: Healthy 580 (96.7%), Developed Glaucoma 20 (3.3%)
+C1: Healthy 272 (91.0%), Developed Glaucoma 27 (9.0%) 
+C2: Healthy 488 (96.6%), Developed Glaucoma 17 (3.4%)
+
+Chi-Square Test: χ² = 17.4617, p = 0.0002
+Fisher’s Test 0-1: OR = 2.8787, p = 0.0007 → SIGNIFICANT
+Fisher’s Test 0-2: OR = 1.0102, p = 1.0000 → Not Significant
+Fisher’s Test 1-2: OR = 0.3509, p = 0.0011 → SIGNIFICANT
